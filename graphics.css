@@ -1,0 +1,231 @@
+body{
+    text-align: center;
+}
+
+a {
+    text-decoration:none;
+}
+
+header{
+    font-size: 30px;
+    color: gray;
+}
+
+/*START main menu */
+
+.menuButton{
+    background-color: red; 
+    border-color: black;
+    border-style: solid;
+    border-width: 10px 10px 10px 10px;
+    color: black;
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 300px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.menuButton:hover{
+    border-top: 10px solid #ffffff;
+    border-bottom: 10px solid #ffffff;
+    
+}
+
+#menuButtons{
+    background-color: gray; 
+    
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 400px;
+    display: inline-block;
+}
+
+/*END main menu */
+
+
+/*START - main game*/
+
+#gameDiv{
+    background-color: black;
+    height: 100vh;
+    align-content: flex-start;
+}
+
+
+    /* START character-sheet*/
+#charSheet{
+    margin-top: 2%;
+    float: left;
+    width: 20%;
+    height: 85%;
+    border: 5px solid white;
+
+}
+#equipment{
+    margin: 5% 5% 5% 5%;
+    width: 90%;
+    height: 57%;
+    border: 1px solid yellow;
+}
+
+
+.eqSlot{
+    width: 32.66%;
+    height: 24.6%;
+    border: 1px solid yellow;
+    float: left;
+}
+
+#helmet{
+    background-image: url('images/eqSlots/temp-helmet.png');
+    background-size: contain;
+    border: 1px solid white;
+}
+
+#mainWeapon{
+    background-image: url('images/eqSlots/temp-weapon.png');
+    background-size: contain;
+}
+
+#secondWeapon{
+    background-image: url('images/eqSlots/temp-shield.png');
+    background-size: contain;
+}
+
+#necklace{
+    background-image: url('images/eqSlots/temp-necklace.png');
+    background-size: contain;
+}
+
+
+#cape{
+    background-image: url('images/eqSlots/temp-cape.png');
+    background-size: contain;
+}
+
+#chest{
+    background-image: url('images/eqSlots/temp-chest.png');
+    background-size: contain;
+}
+
+#legs{
+    background-image: url('images/eqSlots/temp-legs.png');
+    background-size: contain;
+}
+
+#gloves{
+    background-image: url('images/eqSlots/temp-gloves.png');
+    background-size: contain;
+}
+
+#boots{
+    background-image: url('images/eqSlots/temp-boots.png');
+    background-size: contain;
+}
+
+#trinket{
+    background-image: url('images/eqSlots/temp-trinket.png');
+    background-size: contain;
+}
+
+#ring{
+    background-image: url('images/eqSlots/temp-ring.png');
+    background-size: contain;
+}
+
+
+
+#stats{
+    margin: 5% 5% 5% 5%;
+    width: 90%;
+    height: 30%;
+    border: 1px solid yellow;
+}
+
+    /* END character-sheet*/
+
+
+
+#enemy{
+    margin-left: 2%;
+    margin-top: 2%;
+    float: left;
+    width: 50%;
+    height: 430px;
+    border: 5px solid white;
+}
+
+#map{
+    margin-left: 3%;
+    margin-top: 2%;
+    float: left;
+    width: 20%;
+    height: 25%;
+    border: 5px solid white;
+}
+
+
+
+#actions{
+    margin-left: 3%;
+    margin-top: 2%;
+    float: left;
+    width: 48%;
+    height: 5%;
+    border: 5px solid green;
+}
+
+#skills{
+    margin-left: 3%;
+    margin-top: 1%;
+    float: left;
+    width: 48%;
+    height: 10%;
+    border: 5px solid red;
+}
+
+#inventory{
+    margin-right: 3%;
+    margin-left: 3%;
+    margin-top: 2%;
+    border: 5px solid yellow;
+    width: 20%;
+    height: 50%;
+    float: right;
+}
+
+/*END - main game*/
+
+
+
+/*START - character creation*/
+
+#charCreation{
+    background-color: black;
+    height: 100vh;
+    align-content: flex-start;
+}
+
+#chooseRace{
+    width: 49%;
+    height: 50%;
+}
+
+#chooseClass{
+    width: 49%;
+    height: 50%;
+}
+
+.choose{
+    border: 5px solid white;
+    float: left;
+}
+
+
+/*END - character creation*/
