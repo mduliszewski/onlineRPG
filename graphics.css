@@ -222,9 +222,47 @@ header{
     height: 50%;
 }
 
+.attributeValues{
+    color: gold;
+}
+
+.attributeValues2{
+    color: white;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    font-size: 14px;
+    float: left;
+}
+
+#attributes{
+
+    width: 15%;
+}
+
+#createChar{
+    width: 83%;
+    height: 41%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#p1{
+    margin-left: 20px;
+}
+
+.description{
+    margin-top: 5%;
+    margin-bottom: 3%;
+    color: antiquewhite;
+}
+
 .choose{
     border: 5px solid white;
     float: left;
+    color: #ffffff
 }
 
 

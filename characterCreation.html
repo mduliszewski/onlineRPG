@@ -18,25 +18,60 @@
 
 
 	    <header>
-			    Averol - the online rpg
+                <a href="index.html">Averol - the online rpg</a>
         </header>
 
 
         <div class="choose" id=chooseRace>
-            
+
+            <div class="description">
+                Choose race: 
+            </div>
+
+            <select id="selectedRace">
+                <option value="Human">Human</option>
+                <option value="Elf">Elf</option>
+                <option value="Orc">Orc</option>
+                <option value="Halfling">Halfling</option>
+                <option value="Dwarf">Dwarf</option>
+            </select> 
             
 
         </div>
 
-        <div class="choose" id=chooseClass>
+        <div class="choose" id="chooseClass">
 
+            <div class="description">
+                Choose class: 
+            </div>
+
+            <select id="selectedClass">
+                <option value="warrior">Warrior</option>
+                <option value="wizard">Wizard</option>
+                <option value="assasin">Assasin</option>
+                <option value="necromancer">Necromancer</option>
+            </select> 
             
+
 
         </div>
 
-        <div class="choose" id=attributes>
+        <div class="choose" id="attributes">
 
-            
+            <p id="p1" class="choose">Current attribute values: </p>
+            <p id="strText" class="attributeValues">Strength = 10</p>
+            <p id="conText" class="attributeValues">Constitution =  10</p>
+            <p id="intText" class="attributeValues">Inteligence = 10</p>
+            <p id="wisText" class="attributeValues">Wisdom =  10</p>
+            <p id="agText" class="attributeValues">Agility =  10</p>
+            <p id="hpText" class="attributeValues">Current health =  10</p>
+            <p id="dmgText" class="attributeValues">Current damage =  10</p>
+
+        </div>
+
+        <div class = "choose" id="createChar" >
+
+            <button id="beginButton" class="menuButton">Start Game!</button>
 
         </div>
         
@@ -47,7 +82,7 @@
 	
 
 	
-    
+    <script src="enemies.js"></script> 
     <script src="averol.js"></script> 
 
 </body>
