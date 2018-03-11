@@ -9,6 +9,7 @@ function Enemy(){
     this.health = this.constitution *50;
     this.damage = this.strength * 5;
     this.enemyNumber = 0;
+    this.level = 0;
     
     this.getStrength = function(){
         return this.strength;
@@ -46,6 +47,7 @@ function Wolf(){
     this.health = this.constitution *10;
     this.damage = this.strength * 2;
     this.name = "Wolf";
+    this.level = 1;
 }
 
 function Goblin(){
@@ -55,6 +57,7 @@ function Goblin(){
     this.health = this.constitution *10;
     this.damage = this.strength * 2;
     this.name = "Goblin";
+    this.level = 2;
 }
 
 Wolf.prototype = new Enemy();

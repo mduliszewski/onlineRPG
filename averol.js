@@ -1,7 +1,7 @@
 
 'use strict';
 
-
+$(document).ready(function(){
 
 class Class {
     get strengthModifier() {
@@ -228,6 +228,30 @@ var character = {
 
 }
 
+var inventory = {
+    i1: {},
+    i2: {},
+    i3: {},
+    i4: {},
+    i5: {},
+    i6: {},
+    i7: {},
+    i8: {},
+    i9: {},
+    i10: {},
+    i11: {},
+    i12: {},
+    i13: {},
+    i14: {},
+    i15: {},
+    i16: {},
+    i17: {},
+    i18: {},
+    i19: {},
+    i20: {},
+
+}
+
 function assignClassSkillModifiers(aCharacter) {
 
     character.skills.strength = 10 * character.class.strengthModifier * character.race.strengthModifier;
@@ -361,7 +385,7 @@ function updateEnemyLabels(enemy){
 
 
 
-
+//load game
 if (window.location.href == "file:///C:/Users/Michal/OneDrive/Portfolio/Projects/onlineRPG/index.html") {
 
     document.getElementById("loadButton").onclick = function () {
@@ -374,13 +398,28 @@ if (window.location.href == "file:///C:/Users/Michal/OneDrive/Portfolio/Projects
 var waveCount = 0;
 //MAIN GAME
 if(window.location.href == "file:///C:/Users/Michal/OneDrive/Portfolio/Projects/onlineRPG/mainGame.html"){
-    enemy = enemies[waveCount];
     load();
     updateEnemyLabels();
     updateAtrributeLabels2();
 
+    window.alert("Your next enemy is: "+enemies[waveCount].getName());
+    var turnNr = 1;
+    var nrOfAttacks = 0;
+    var isCombatStarted = false;
     document.getElementById("fightButton").onclick = function () {
-        fight(character, enemies[waveCount]);
+        isCombatStarted = true;
+        window.alert("You approch enemy..");
+        document.getElementById("gameLog").innerHTML += "Started combat with "+enemies[waveCount].getName()+"!<br><br>";
+        updateEnemyLabels();
+    }
+    document.getElementById("attackButton").onclick = function () {
+        if(isCombatStarted){
+            nrOfAttacks = 0;
+            fight(character, enemies[waveCount]);
+        }else{
+            window.alert("You must start combat first!");
+        }
+        gameLog.scrollTop = gameLog.scrollHeight;
         updateEnemyLabels();
     }
 
@@ -388,36 +427,12 @@ if(window.location.href == "file:///C:/Users/Michal/OneDrive/Portfolio/Projects/
 
 
 
-
+var gameLog = document.getElementById("gameLog");
+gameLog.scrollTop = gameLog.scrollHeight;
 
 
 
 var enemy = {}
-
-var inventory = {
-    i1: {},
-    i2: {},
-    i3: {},
-    i4: {},
-    i5: {},
-    i6: {},
-    i7: {},
-    i8: {},
-    i9: {},
-    i10: {},
-    i11: {},
-    i12: {},
-    i13: {},
-    i14: {},
-    i15: {},
-    i16: {},
-    i17: {},
-    i18: {},
-    i19: {},
-    i20: {},
-
-}
-
 
 
 function save() {
@@ -447,31 +462,71 @@ function attack(character, enemy) {
 
     if (priority == "character") {
         enemy.health -= character.damage;
-        window.alert("Your enemy has "+ enemy.getHealth()+" health left!");
+
+        document.getElementById("gameLog").innerHTML += "Your deal "+ character.damage+" damage!<br>";
+        document.getElementById("gameLog").innerHTML += "Your enemy has "+ enemy.getHealth()+" health left!<br>";
+        //window.alert("Your enemy has "+ enemy.getHealth()+" health left!");
         priority = "enemy";
     } else {
         character.health -= enemy.getDamage();
-        window.alert("You have now "+character.health+" health left!");
+
+        document.getElementById("gameLog").innerHTML += enemy.getName()+" deals "+ enemy.getDamage()+" damage!<br>";
+        document.getElementById("gameLog").innerHTML += "You have now "+character.health+" health left!<br>"
+       // window.alert("You have now "+character.health+" health left!");
         priority = "character";
     }
+    nrOfAttacks++;
+    updateEnemyLabels();
 }
 
 function fight(character, enemy) {
-
+    document.getElementById("gameLog").innerHTML += "Turn nr "+ turnNr +"!<br>";
     if (character.skills.agility > enemy.getAgility()) {
         priority = "character";
     } else {
         priority = "enemy";
     }
 
-    while (character.health > 0 && enemy.getHealth() > 0) {
+    //var nrOfAttacks = 0;
+    turnNr++;
+    sleep(500).then(() => {
+        while (character.health > 0 && enemy.getHealth() > 0 && nrOfAttacks < 2) {
+            attack(character, enemy);
+            updateAtrributeLabels2();
 
-        attack(character, enemy);
-        updateAtrributeLabels2();
-    }
-    if(enemy.getHealth()<=0){
-        waveCount++;
-        //save();
-    }
+            //if enemy defeated
+            if(enemy.getHealth()<=0){
+                generateItem(enemy.level);
+                waveCount++;
+                isCombatStarted = false;
+                turnNr = 1;
+                document.getElementById("gameLog").innerHTML += enemy.getName()+" has died!<br>";
+                window.alert("You won! "+enemy.getName()+" has died!")
+                window.alert("Your next enemy is: "+enemies[waveCount].getName());
+                updateEnemyLabels();
+                printInventory(inventory);
+                //save();
+                //character.chest
+                break;
+            }
 
+            //if player defeated
+            if(character.health<=0){
+                if(waveCount>1){
+                    waveCount--;
+                }
+                window.alert("You died!");
+                window.location.href = "file:///C:/Users/Michal/OneDrive/Portfolio/Projects/onlineRPG/index.html";            
+            }
+        }
+        document.getElementById("gameLog").innerHTML += "<br><br>";
+        gameLog.scrollTop = gameLog.scrollHeight;
+    })    
 }
+
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+}); // document rdy
